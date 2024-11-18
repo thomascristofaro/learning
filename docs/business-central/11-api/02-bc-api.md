@@ -7,7 +7,7 @@ In Business Central le API sono di tipologia REST basate su protoccolo OData e s
 
 Installare [Postman](https://www.postman.com/downloads/?utm_source=postman-home): è un popolare strumento di sviluppo API utilizzato da sviluppatori per testare, sviluppare e documentare API. Offre una piattaforma user-friendly per inviare richieste HTTP, testare le risposte e visualizzare i risultati. Postman supporta vari tipi di richieste come GET, POST, PUT e DELETE, rendendolo ideale per lavorare con API RESTful.
 
-### Abilitare Business Central
+<!-- ### Abilitare Business Central
 1. Open the Business Central Administration Shell with administrator privilege.
 2. Esegui questi tre comandi: abilita gli Odata, abilita le API e attiva l'autenticazione NTLM.
 
@@ -21,26 +21,30 @@ Set-NAVServerConfiguration -ServerInstance <BC_instance> -KeyName ServicesUseNTL
 
 ```powershell
 Get-NAVServerConfiguration -ServerInstance <BC_instance>
-```
+``` -->
 
 ## Primo Test
 
-Testiamo l'API companies che è già pronta all'interno dell'ambiente Business Central, ridà come risposta la lista delle company attive su Business Central.
+Testiamo l'API companies che è già pronta all'interno dell'ambiente Business Central, l'API ci fornisce la lista delle company attive su Business Central.
 
 Bisogna lanciare una richiesta HTTP GET all'indirizzo:
 
-```http://<host>:<port>/<serverinstance>/api/v2.0/companies```
+```http://<host>:<port>/<serverinstance>/api/v2.0/companies?tenant=default```
 
-Se la tua installazione è standard, molto probabilmente i dati mancanti sono:
-* ```<host>``` = localhost
+Se la tua installazione è standard, i dati mancanti saranno:
+* ```<host>``` = bcserver
 * ```<port>``` = 7048
-* ```<serverinstance>``` = BC210 
+* ```<serverinstance>``` = BC 
 
-e quindi la costruzione del ```<base URL>``` a cui farò riferimento da qui in avanti diventa: ```http://localhost:7048/BC210```
+e quindi la costruzione dell'indirizzo diventa: 
 
-Possiamo farlo in due modi:
+```http://bcserver:7048/BC/api/v2.0/companies?tenant=default```
+
+Possiamo eseguire l'API in due modi:
 * Incollare l'indirizzo dentro un web browser (chrome, edge...)
 * Testare il metodo su Postman
+
+Alla richiesta di autenticazione bisognerà inserire utente (admin) e password (P@ssw0rd).
 
 ## Creare API Custom
 
@@ -99,13 +103,13 @@ In business central OnPremise gli URL delle API sono costruiti nel seguente modo
 
 Nel caso specifico l'url quindi diventa: 
 
-```<base URL>/api/mycompany/sales/v1.0/mycustomers```
+```http://bcserver:7048/BC/api/mycompany/sales/v1.0/mycustomers```
 
 Provare quindi a contattarlo per visuallizzare la risposta.
 
 Nel caso in cui la richiesta restituisca un errore relativa alla company, bisogna inserire anche l'id della company a cui si vuole accedere, quindi l'url diventa:
 
-```<base URL>/api/mycompany/sales/v1.0/companies(<company id>)/mycustomers```
+```http://bcserver:7048/BC/api/mycompany/sales/v1.0/companies(<company id>)/mycustomers```
 
 ## Basic Operations
 
@@ -163,7 +167,7 @@ Per eliminare un record in una tabella, è necessario utilizzare il metodo DELET
 
 ## Esercizio
 
-Costruire un'API per la Squash application creata nelle precedenze lezioni. Creare una pagina "SquashPlayerAPI" con i seguenti campi: id, no, name, member. Provare a leggere, inserire, modificare ed eliminare i dati tramite postman.
+Costruire un'API per i clienti. Provare a leggere, inserire, modificare ed eliminare i dati tramite postman. Fare la stessa cosa anche con gli ordini di vendita.
 
 ## Connessione con Power Platform
 
