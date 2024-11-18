@@ -1,4 +1,4 @@
-# Microsoft learning
+# Thomas learning
 This static website, generated with Docusaurus by Thomas Cristofaro, is a comprehensive hub for educational resources, tutorials, and documentation designed to empower individuals with knowledge related to Microsoft products and services.
 
 # Website

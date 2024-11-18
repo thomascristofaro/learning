@@ -1,0 +1,1 @@
+# Integrazione con Business Central

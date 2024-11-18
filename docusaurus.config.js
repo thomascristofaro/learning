@@ -8,7 +8,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'Microsoft Learning',
+    title: 'Thomas Learning',
     tagline: 'A comprehensive hub for educational resources, tutorials, and documentation',
     favicon: 'img/favicon.ico',
 
@@ -53,7 +53,7 @@ const config = {
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
             // Replace with your project's social card
-            image: 'img/docusaurus.png',
+            image: 'img/thomas.png',
             docs: {
                 sidebar: {
                     hideable: true,
@@ -73,8 +73,20 @@ const config = {
                         label: 'Business Central',
                     },
                     {
-                        href: 'https://github.com/thomascristofaro/learning',
-                        label: 'GitHub',
+                        type: 'docSidebar',
+                        sidebarId: 'powerPlatformSidebar',
+                        position: 'left',
+                        label: 'Power Platform',
+                    },
+                    {
+                        type: 'docSidebar',
+                        sidebarId: 'powerAppsSidebar',
+                        position: 'left',
+                        label: 'Power Apps',
+                    },
+                    {
+                        href: 'https://cristofaro.dev',
+                        label: 'Blog',
                         position: 'right',
                     },
                 ],
@@ -82,15 +94,6 @@ const config = {
             footer: {
                 style: 'dark',
                 links: [
-                    {
-                        title: 'Docs',
-                        items: [
-                            {
-                                label: 'Tutorial Docusaurus',
-                                to: '/docs/tutorial/intro',
-                            },
-                        ],
-                    },
                     {
                         title: 'Community',
                         items: [

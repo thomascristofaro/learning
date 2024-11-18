@@ -23,7 +23,7 @@ function HomepageHeader() {
 export default function Home() {
     return (
         <Layout
-            description="Microsoft Learning: a comprehensive hub for educational resources, tutorials, and documentation">
+            description="Thomas Learning: a comprehensive hub for educational resources, tutorials, and documentation">
             <HomepageHeader />
             <main>
                 <HomepageFeatures />
