@@ -139,7 +139,13 @@ La classe HttpContent rappresenta un body HTTP e gli headers del contenuto. È u
 | WriteFrom(Value)    | Imposta la variabile HttpContent sul testo o flusso fornito.                                                  |
 
 ## Esercizio 1
-Creare un pulsante nella pagina degli squash players che, quando premuto, richiama un servizio esterno e visualizza i dati recuperati dal messaggio di risposta tramite un dialog di Message alla fine del processo. Il servizio da contattare è https://jsonplaceholder.typicode.com e bisogna recuperare i dati relativi agli [utenti](https://jsonplaceholder.typicode.com/users). Potete provare anche a fare una richiesta POST per creare un nuovo utente a partire da uno squash player. Ma questo non verrà veramente creato, in quanto il servizio è solo di test.
+Si vuole testare l'API degli utenti del servizio https://jsonplaceholder.typicode.com che mette a disposizione degli esempi di API. Eseguire quindi i seguenti passaggi:
+1. Creare un'estensione della pagina lista clienti
+2. Creare un pulsante chiamato "Read User API" che deve:
+3. Contattare l'API degli [utenti](https://jsonplaceholder.typicode.com/users) tramite una chiamata GET
+4. Testare lo status code, la chiamata è andata a buon fine?
+    * se no, allora lanciare un errore con il motivo del codice dello stato
+    * se si, allora lanciare un messaggio con il testo del messaggio di risposta.
 
 ## JSON
 AL in Business Central ha il supporto integrato per usare dati JSON. Queste classi vengono usate per il trasferimento dei dati e non come campi di una tabella. Queste classi sono un'implementazione delle classi System.Json di .NET Framework:
@@ -225,18 +231,13 @@ JsonValue è un contenitore per tutti i valori JSON fondamentali. Un JsonValue p
 | SetValueToNull()     | Imposta i contenuti della variabile JsonValue sulla rappresentazione JSON di NULL.              |
 
 ## Esercizio 2
-Partendo dall'esercizio 1, leggere il JSON di ritorno della risorsa e inserirla in un record della tabella squash player. Per fare ciò è necessario andare a convertire il testo di risposta in un oggetto JSON, andare a leggere i dati tramite le funzioni che abbiamo visto nella sezione JSON e quindi inserirli nel record.
-
-
-
-
-
-
-
-
-
-
-
+Partendo dall'esercizio 1, analizzare il JSON di risposta e inserire gli utenti nella tabella clienti.
+1. Convertire la risposta dal formato testo in un JSON
+2. Leggere i singoli valori tramite le funzioni spiegate nei paragrafi precedenti
+3. Compilare i campi di un record cliente con i valori presi dal JSON
+4. Creare un campo Boolean "API" nella tabella clienti
+5. Impostare il campo "API" dei record creati tramite chiamata API a true
+6. Creare un pulsante per eliminare tutti i record clienti che hanno il campo "API"=true, in questo modo si possono fare più test con gli stessi dati e lasciare un ambiente pulito.
 
 
 
