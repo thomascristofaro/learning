@@ -237,9 +237,11 @@ In Business Central, esistono i report definiti "processing only", come il repor
 
 ## Esercizio
 
+Provare a costruire i seguenti report:
 * Lista di clienti e fornitori
-* Lista di articoli e quantità disponibili per magazzino
-* Collegandoci all'applicazione squash, creare un report di lista degli Squash Player
+* Lista di articoli e con relativa quantità disponibile a magazzino
+* Lista delle righe di una fattura di vendita con campi di testata
+* Lista di fornitori con relativo totale di righe di ordine di acquisto
 
 ## Link utili
 - [Creazione di report per Microsoft Dynamics 365 Business Central](https://learn.microsoft.com/it-it/training/paths/build-reports/)
