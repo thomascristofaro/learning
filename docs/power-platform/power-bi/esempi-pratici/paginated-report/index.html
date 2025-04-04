@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="it" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-power-platform/power-bi/esempi-pratici/paginated-report" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">Creare un report impaginato e caricare | Thomas Learning</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://thomascristofaro.github.io/learning/img/thomas.png"><meta data-rh="true" name="twitter:image" content="https://thomascristofaro.github.io/learning/img/thomas.png"><meta data-rh="true" property="og:url" content="https://thomascristofaro.github.io/learning/docs/power-platform/power-bi/esempi-pratici/paginated-report"><meta data-rh="true" property="og:locale" content="it"><meta data-rh="true" name="docusaurus_locale" content="it"><meta data-rh="true" name="docsearch:language" content="it"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Creare un report impaginato e caricare | Thomas Learning"><meta data-rh="true" name="description" content="Questa esercitazione spiega come connettersi a un database SQL di Azure di esempio, utilizzare una procedura guidata in Power BI Generatore report per creare un report impaginato con una tabella che esegue il wrapping in più pagine e successivamente caricare il report impaginato in qualsiasi area di lavoro nel servizio Power BI."><meta data-rh="true" property="og:description" content="Questa esercitazione spiega come connettersi a un database SQL di Azure di esempio, utilizzare una procedura guidata in Power BI Generatore report per creare un report impaginato con una tabella che esegue il wrapping in più pagine e successivamente caricare il report impaginato in qualsiasi area di lavoro nel servizio Power BI."><link data-rh="true" rel="icon" href="/learning/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://thomascristofaro.github.io/learning/docs/power-platform/power-bi/esempi-pratici/paginated-report"><link data-rh="true" rel="alternate" href="https://thomascristofaro.github.io/learning/docs/power-platform/power-bi/esempi-pratici/paginated-report" hreflang="it"><link data-rh="true" rel="alternate" href="https://thomascristofaro.github.io/learning/docs/power-platform/power-bi/esempi-pratici/paginated-report" hreflang="x-default"><link rel="stylesheet" href="/learning/assets/css/styles.30a2b5c7.css">
+<script src="/learning/assets/js/runtime~main.a29a1f3c.js" defer="defer"></script>
+<script src="/learning/assets/js/main.6235cb7f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Passa al contenuto principale"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Passa al contenuto principale</a></div><nav aria-label="Principale" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Attiva/disattiva la barra di navigazione" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/learning/"><div class="navbar__logo"><img src="/learning/img/avatar-sign.png" alt="Learning Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/learning/img/avatar-sign.png" alt="Learning Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Learning</b></a><a class="navbar__item navbar__link" href="/learning/docs/business-central/Introduzione/intro">Business Central</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/learning/docs/power-platform/intro">Power Platform</a><a class="navbar__item navbar__link" href="/learning/docs/power-apps/intro">Power Apps</a></div><div class="navbar__items navbar__items--right"><a href="https://cristofaro.dev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Passa dalla modalità scura a quella chiara (currently modalità luce)" aria-label="Passa dalla modalità scura a quella chiara (currently modalità luce)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Torna indietro all&#x27;inizio" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Barra laterale dei documenti" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/learning/docs/power-platform/intro">Introduzione a Power Platform</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/learning/docs/category/fundamentals-components">Fundamentals Components</a><button aria-label="Expand sidebar category &#x27;Fundamentals Components&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/learning/docs/category/power-bi">Power BI</a><button aria-label="Collapse sidebar category &#x27;Power BI&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/learning/docs/power-platform/power-bi/power_bi">Basics of Power BI</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/learning/docs/category/esempi-pratici">Esempi pratici</a><button aria-label="Collapse sidebar category &#x27;Esempi pratici&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/learning/docs/power-platform/power-bi/esempi-pratici/desk-excel-to-report">Power BI Desktop: da Excel al report</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/learning/docs/power-platform/power-bi/esempi-pratici/desk-dimensionale">Power BI Desktop: modello dimensionale da segnalare</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/learning/docs/power-platform/power-bi/esempi-pratici/explore-example">Esempio di Power BI</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/learning/docs/power-platform/power-bi/esempi-pratici/decomposition-tree">Creare un albero di scomposizione</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/learning/docs/power-platform/power-bi/esempi-pratici/paginated-report">Creare un report impaginato e caricare</a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/learning/docs/category/power-apps">Power Apps</a><button aria-label="Expand sidebar category &#x27;Power Apps&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/learning/docs/category/power-automate">Power Automate</a><button aria-label="Expand sidebar category &#x27;Power Automate&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/learning/docs/category/complementary-solutions">Complementary Solutions</a><button aria-label="Expand sidebar category &#x27;Complementary Solutions&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav><button type="button" title="Collassa la barra laterale" aria-label="Collassa la barra laterale" class="button button--secondary button--outline collapseSidebarButton_PEFL"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_kv0_"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Briciole di pane"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Pagina principale" class="breadcrumbs__link" href="/learning/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/learning/docs/category/power-bi"><span itemprop="name">Power BI</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/learning/docs/category/esempi-pratici"><span itemprop="name">Esempi pratici</span></a><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Creare un report impaginato e caricare</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">Su questa pagina</button></div><div class="theme-doc-markdown markdown"><header><h1>Creare un report impaginato e caricare</h1></header>
+<p>Questa esercitazione spiega come connettersi a un database SQL di Azure di esempio, utilizzare una procedura guidata in Power BI Generatore report per creare un report impaginato con una tabella che esegue il wrapping in più pagine e successivamente caricare il report impaginato in qualsiasi area di lavoro nel servizio Power BI.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-104-3f77c9afced048f9ab54448b308ad852.png" width="602" height="640" class="img_ev3q"></p>
+<p>Questa esercitazione illustra come:</p>
+<ul>
+<li>Creare un database di esempio di Azure.</li>
+<li>Creare una matrice in Power BI Generatore report con l&#x27;aiuto di una procedura guidata.</li>
+<li>Formattare il report con titolo, numeri di pagina e intestazioni di colonna in ogni pagina.</li>
+<li>Formattare la valuta.</li>
+<li>Caricare il report nel servizio Power BI.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="prerequisiti">Prerequisiti<a href="#prerequisiti" class="hash-link" aria-label="Link diretto a Prerequisiti" title="Link diretto a Prerequisiti">​</a></h3>
+<p>Ecco i prerequisiti per la creazione del report impaginato:</p>
+<ul>
+<li>Installare gratuitamente Power BI Generatore report dall&#x27;Area download Microsoft.</li>
+<li>Se non hai una sottoscrizione di Azure, crea un <a href="https://azure.microsoft.com/free/?WT.mc_id=A261C142F" target="_blank" rel="noopener noreferrer">account gratuito</a>.</li>
+<li>Seguire la guida introduttiva Creare un database SQL di Azure nell&#x27;portale di Azure. Copiare e salvare il valore nella casella Nome server della scheda Panoramica . Ricordare il nome utente e la password creati in Azure.</li>
+</ul>
+<p>I requisiti di licenza per la pubblicazione di report impaginati di Power BI (file con estensione rdl) sono gli stessi dei report di Power BI (file con estensione pbix).</p>
+<ul>
+<li>Con una licenza gratuita, è possibile pubblicare report impaginati nell&#x27;area di lavoro personale nel servizio Power BI.</li>
+<li>Con una licenza di Power BI Pro o una licenza PPU, è possibile pubblicare report impaginati in altre aree di lavoro. È anche necessario almeno un ruolo di collaboratore nell&#x27;area di lavoro.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="creare-la-matrice-con-una-procedura-guidata">Creare la matrice con una procedura guidata<a href="#creare-la-matrice-con-una-procedura-guidata" class="hash-link" aria-label="Link diretto a Creare la matrice con una procedura guidata" title="Link diretto a Creare la matrice con una procedura guidata">​</a></h3>
+<ol>
+<li>
+<p>Avviare Power BI Report Generator dal computer.
+Verrà visualizzata la finestra di dialogo <strong>Attività iniziali</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-105-8927a3438fcc96de260a5237681bc1ca.png" width="798" height="590" class="img_ev3q"></p>
+</li>
+<li>
+<p>Nel riquadro sinistro verificare che l&#x27;opzione <strong>Nuovo report</strong> sia selezionata e nel riquadro destro selezionare <strong>Creazione guidata</strong> tabella o matrice.</p>
+</li>
+<li>
+<p>Nella pagina <strong>Scegliere un set di dati</strong> selezionare <strong>Crea un set di dati&gt;Avanti</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-106-ff282c2407cc2f04890353d30cc29910.png" width="401" height="322" class="img_ev3q"></p>
+</li>
+<li>
+<p>Nella pagina Scegliere una <strong>connessione a un&#x27;origine dati</strong> selezionare <strong>Nuovo</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-107-54deaa2c521e046bf016ae5201cc216b.png" width="398" height="310" class="img_ev3q"></p>
+<p>Verrà visualizzata la finestra di dialogo <strong>Proprietà origine dati</strong>.</p>
+</li>
+<li>
+<p>È possibile assegnare un nome a un&#x27;origine dati qualsiasi elemento desiderato, usando caratteri e caratteri di sottolineatura. Per questa esercitazione, nella casella <strong>Nome</strong> digitare <strong>MyAzureDataSource</strong>.</p>
+</li>
+<li>
+<p>Nella casella seleziona <strong>tipo di connessione</strong>, selezionare <strong>database SQL di Microsoft Azure</strong>.</p>
+</li>
+<li>
+<p>Selezionare <strong>Compila</strong> accanto alla casella <strong>stringa di Connessione ion</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-108-18b8ba3208eabf3d610e6f39e361ab48.png" width="596" height="497" class="img_ev3q"></p>
+<p>Verrà visualizzata la finestra di dialogo Proprietà Connessione ion.</p>
+</li>
+<li>
+<p>Tornare al portale di Azure e selezionare <strong>Database SQL</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-109-e78dc7a73fd8397b6c65b9662bc4ae65.png" width="872" height="461" class="img_ev3q"></p>
+</li>
+<li>
+<p>Selezionare il database SQL di Azure creato nell&#x27;argomento di avvio rapido &quot;Creare un esempio di database SQL di Azure nella portale di Azure&quot; nella sezione <strong>Prerequisiti</strong> di questo articolo.</p>
+</li>
+<li>
+<p>Nella scheda <strong>Panoramica</strong> copiare il valore nella casella <strong>Nome server</strong>.</p>
+</li>
+<li>
+<p>Tornare a <strong>Generatore report</strong>. Nella finestra di dialogo <strong>Proprietà Connessione ion</strong> in <strong>Nome server</strong> incollare il nome del server copiato.</p>
+</li>
+<li>
+<p>Per Accedere al server, assicurarsi che l&#x27;opzione <strong>Usa autenticazione di SQL Server</strong> sia selezionata, quindi digitare il nome utente e la password creati in Azure per il database di esempio.</p>
+</li>
+<li>
+<p>In <strong>Connessione a un database</strong> selezionare la freccia a discesa e selezionare il nome del database creato in Azure.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-110-d90945dd01fc772941886b87a0070a47.png" width="350" height="576" class="img_ev3q"></p>
+</li>
+<li>
+<p>Selezionare <strong>Test connessione</strong>. Viene visualizzato il messaggio Test results that Test connection succeeded .You see the Test results message that <em><strong>Test connection succeeded</strong></em>.</p>
+</li>
+<li>
+<p>Seleziona <strong>OK&gt;OK</strong>.<br>
+<!-- -->Nella casella stringa di Connessione ion Generatore report viene visualizzata la stringa di connessione appena creata.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-111-c0e1626b207c318a0c938d2e7ab31701.png" width="602" height="460" class="img_ev3q"></p>
+</li>
+<li>
+<p>Seleziona <strong>OK</strong>.</p>
+</li>
+<li>
+<p>Nella pagina <strong>Scegliere una connessione a un&#x27;origine dati</strong> viene visualizzato &quot;(in questo report)&quot; nella connessione all&#x27;origine dati appena creata. Selezionare l&#x27;origine <strong>&gt;dati Avanti</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-112-c292dcde03f9533f5a79fce09a34c8f2.png" width="398" height="386" class="img_ev3q"></p>
+</li>
+<li>
+<p>Immettere lo stesso nome utente e la stessa password nella casella <strong>&gt;Avanti</strong>.</p>
+</li>
+<li>
+<p>Nella pagina <strong>Progettare una query</strong> espandere <strong>SalesLT</strong>, espandere <strong>Tabelle</strong> e selezionare queste tabelle:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Indirizzo</p>
+</li>
+<li>
+<p>Cliente</p>
+</li>
+<li>
+<p>Prodotto</p>
+</li>
+<li>
+<p>ProductCategory</p>
+</li>
+<li>
+<p>SalesOrderDetail</p>
+</li>
+<li>
+<p>SalesOrderHeader
+Poiché l&#x27;opzione Rileva automaticamente relazioni&gt;è selezionata, Generatore report rileva le relazioni tra queste tabelle.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-113-6fad109981ba3e788a0ca4ed9e37b7b7.png" width="602" height="505" class="img_ev3q"></p>
+</li>
+</ul>
+<ol start="20">
+<li>
+<p>Selezionare <strong>Esegui query</strong>. Generaore report visualizza <strong>Risultati</strong> della query.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-114-b1bbdf73a52dd7322170f162bb48ddeb.png" width="702" height="468" class="img_ev3q"></p>
+</li>
+<li>
+<p>Selezionare Avanti.</p>
+</li>
+<li>
+<p>Nella pagina <strong>Disponi campi</strong> trascinare questi campi dalla casella <strong>Campi disponibili</strong> nella casella <strong>Gruppi di righe</strong>:</p>
+</li>
+</ol>
+<ul>
+<li>CompanyName</li>
+<li>SalesOrderNumber</li>
+<li>Product_Name</li>
+</ul>
+<ol start="23">
+<li>Trascinare questi campi dalla casella Campi disponibili nella casella Valori:</li>
+</ol>
+<ul>
+<li>OrderQty</li>
+<li>UnitPrice</li>
+<li>LineTotal
+Generatore report fatto automaticamente i campi nel Somme di caselle di valori.
+<img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-115-4cab95af66feec44e3bd1fe3d0d080e1.png" width="562" height="424" class="img_ev3q"></li>
+</ul>
+<ol start="24">
+<li>Nella pagina <strong>Scegli il layout</strong> mantenere tutte le impostazioni predefinite, ma deselezionare la casella di controllo accanto a <strong>Espandi/comprimi gruppi</strong>. In generale, la funzionalità gruppi di espansione/compressione è ideale, ma questa volta si vuole che la tabella venga disposta a capo in più pagine.</li>
+<li>Selezionare <strong>Next&gt;Finish</strong> (Avanti &gt; Fine). La tabella viene visualizzata nell&#x27;area di progettazione.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="elementi-creati">Elementi creati<a href="#elementi-creati" class="hash-link" aria-label="Link diretto a Elementi creati" title="Link diretto a Elementi creati">​</a></h3>
+<p>Sospendiamo nde per un momento per esaminare i risultati della procedura guidata.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-116-39ae7da067c8c72e3dd818b1dc4ba14f.png" width="900" height="561" class="img_ev3q"></p>
+<ol>
+<li>Nel riquadro <strong>Dati report</strong> vengono visualizzati l&#x27;origine dati incorporata di Azure e il set di dati incorporato in base a esso, entrambi creati.</li>
+<li>L&#x27;area di progettazione è larga circa 6 pollici. Nell&#x27;area di progettazione viene visualizzata la matrice, visualizzando intestazioni di colonna e valori segnaposto. La matrice ha sei colonne e sembra essere alta solo cinque righe.</li>
+<li><strong>Order Qty, Unit Price e Line Total</strong> sono tutti somme e ogni gruppo di righe ha un subtotale.
+Non vengono ancora visualizzati valori di dati effettivi. È necessario eseguire il report per visualizzarli.</li>
+<li>Nel riquadro <strong>Proprietà</strong> la matrice selezionata è denominata Tablix1. Una <em>Tablix</em> in Generatore report è un&#x27;area dati che visualizza i dati in righe e colonne. Può essere una tabella o una matrice.</li>
+<li>Nel riquadro <strong>Raggruppamento</strong> vengono visualizzati i tre gruppi di righe creati nella procedura guidata:</li>
+</ol>
+<ul>
+<li>
+<p>CompanyName</p>
+</li>
+<li>
+<p>Ordine cliente</p>
+</li>
+<li>
+<p>Nome prodotto</p>
+<p>Questa matrice non include gruppi di colonne.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="eseguire-il-report">Eseguire il report<a href="#eseguire-il-report" class="hash-link" aria-label="Link diretto a Eseguire il report" title="Link diretto a Eseguire il report">​</a></h3>
+<p>Per visualizzare i valori effettivi, è necessario eseguire il report.</p>
+<ol>
+<li>
+<p>Selezionare &quot;Esegui&quot; nella barra degli strumenti <strong>Home</strong>.
+Ora i valori vengono visualizzati. La matrice contiene molte più righe rispetto a quelle visualizzate nella visualizzazione Struttura. Si noti che il Generatore di report indica che è la pagina 1 di 2? Il Generatore di report carica il report il più velocemente possibile, quindi recupera solo dati sufficienti per alcune pagine alla volta. Il punto interrogativo indica che il Generatore di report non ha ancora caricato tutti i dati.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-117-1fd038f4eb07b956c642f00d8b6545a4.png" width="650" height="600" class="img_ev3q"></p>
+</li>
+<li>
+<p>Selezionare <strong>Layout di stampa</strong>. Il report sarà in questo formato quando viene stampato. Generatore report ora sa che il report ha 33 pagine e ha aggiunto automaticamente un indicatore di data e ora nel piè di pagina.</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="formattare-il-report">Formattare il report<a href="#formattare-il-report" class="hash-link" aria-label="Link diretto a Formattare il report" title="Link diretto a Formattare il report">​</a></h3>
+<p>È ora disponibile un report con una matrice che esegue il wrapping in 33 pagine. Aggiungere altre funzionalità e migliorare l&#x27;aspetto. È possibile eseguire il report dopo ogni passaggio, se si vuole vedere come si procede.</p>
+<ul>
+<li>Nella scheda <strong>Esegui</strong> della barra multifunzione selezionare <strong>Progettazione</strong>, quindi è possibile continuare a modificarla.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="imposta-larghezza-pagina">Imposta larghezza pagina<a href="#imposta-larghezza-pagina" class="hash-link" aria-label="Link diretto a Imposta larghezza pagina" title="Link diretto a Imposta larghezza pagina">​</a></h3>
+<p>In genere un report impaginato viene formattato per la stampa e una pagina tipica è 8 1/2 X 11 pollici.</p>
+<ol>
+<li>
+<p>Trascinare il righello per fare in modo che l&#x27;area di progettazione sia larga 7 pollici. I margini predefiniti sono di 1 pollice su ogni lato, quindi i margini laterali devono essere più stretti.</p>
+</li>
+<li>
+<p>Fare clic nell&#x27;area grigia intorno all&#x27;area di progettazione per visualizzare le proprietà del report .
+Se il riquadro Proprietà non viene visualizzato, selezionare la scheda <strong>&gt;Visualizza Proprietà</strong>.</p>
+</li>
+<li>
+<p>Espandere <strong>Margini</strong> e modificare Sinistra e Destra da 1 pollice a 0,75 pollici.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-118-b2687f5550f5db74006363004ba3ca15.png" width="532" height="270" class="img_ev3q"></p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="aggiungere-un-titolo-al-report">Aggiungere un titolo al report<a href="#aggiungere-un-titolo-al-report" class="hash-link" aria-label="Link diretto a Aggiungere un titolo al report" title="Link diretto a Aggiungere un titolo al report">​</a></h3>
+<ol>
+<li>Selezionare le parole <em>Fare clic per aggiungere il titolo nella parte superiore della pagina</em>, quindi digitare <em>Sales by Company</em>.</li>
+<li>Selezionare il testo del titolo e nel riquadro <strong>Proprietà</strong> in <strong>Carattere</strong> impostare <strong>Colore su Blu</strong>.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="aggiungere-un-numero-di-pagina">Aggiungere un numero di pagina<a href="#aggiungere-un-numero-di-pagina" class="hash-link" aria-label="Link diretto a Aggiungere un numero di pagina" title="Link diretto a Aggiungere un numero di pagina">​</a></h3>
+<p>Si è notato che il report ha un indicatore di data e ora nel piè di pagina. È anche possibile aggiungere un numero di pagina al piè di pagina.</p>
+<ol>
+<li>
+<p>Nella parte inferiore dell&#x27;area di progettazione viene visualizzato <strong>[&amp;ExecutionTime]</strong> a destra nel piè di pagina.</p>
+</li>
+<li>
+<p>Nel riquadro <strong>Dati</strong> report espandere la cartella <strong>Campi predefiniti</strong>. Trascinare <strong>Numero pagina</strong> sul lato sinistro del piè di pagina, con la stessa altezza di <strong>[&amp;ExecutionTime]</strong>.</p>
+</li>
+<li>
+<p>Trascinare il lato destro della casella <strong>[&amp;PageNumber]</strong> per renderlo quadrato.</p>
+</li>
+<li>
+<p>Nella scheda <strong>Inserisci</strong> selezionare <strong>Casella di testo</strong>.</p>
+</li>
+<li>
+<p>Fare clic a destra di <strong>[&amp;PageNumber]</strong>, digitare &quot;of&quot;, quindi impostare il quadrato della casella di testo.</p>
+</li>
+<li>
+<p>Trascinare <strong>Overall Total Pages</strong> sul piè di pagina, a destra di &quot;of&quot;, quindi trascinarne il lato destro per renderlo quadrato.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-119-1444e5fe037a6c48900b4c729b37af19.png" width="362" height="399" class="img_ev3q"></p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ingrandire-la-tabella">Ingrandire la tabella<a href="#ingrandire-la-tabella" class="hash-link" aria-label="Link diretto a Ingrandire la tabella" title="Link diretto a Ingrandire la tabella">​</a></h3>
+<p>Ora è possibile rendere la matrice sufficientemente ampia da riempire la larghezza della pagina e rendere più ampie le colonne di testo in modo che i nomi non scorrono così tanto.</p>
+<ol>
+<li>
+<p>Selezionare la matrice e quindi selezionare la colonna <strong>Nome società</strong>.</p>
+</li>
+<li>
+<p>Passare il puntatore del mouse sulla barra grigia nella parte superiore della matrice al bordo destro della colonna <strong>Nome società</strong>. Trascinare a destra, fino a quando la colonna termina a 1 3/8 pollici.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="data:image/png;base64,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" width="393" height="220" class="img_ev3q"></p>
+</li>
+<li>
+<p>Trascinare il bordo destro di <strong>Product Name</strong> fino a quando la colonna termina a 3 3/4 pollici.</p>
+</li>
+</ol>
+<p>Ora la matrice è quasi larga dell&#x27;area di stampa.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="formattare-la-valuta">Formattare la valuta<a href="#formattare-la-valuta" class="hash-link" aria-label="Link diretto a Formattare la valuta" title="Link diretto a Formattare la valuta">​</a></h3>
+<p>Se si è notato quando è stato eseguito il report, gli import in dollari non vengono ancora formattati come valuta.</p>
+<ol>
+<li>
+<p>Selezionare la cella [Sum(OrderQty)] <em>in alto a sinistra</em>, tenere premuto MAIUSC e selezionare la cella [Sum(LineTotal)] <em>in basso a destra</em>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-121-5d9cdb37d0d631784d3d22545be272bd.png" width="202" height="155" class="img_ev3q"></p>
+</li>
+<li>
+<p>Nella scheda <strong>Home</strong> selezionare il simbolo di valuta del segno di dollaro ($) e quindi selezionare la freccia accanto a <strong>Stili&gt;segnaposto Valori</strong> di esempio.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-122-d95e4749e5bb2052eaed290efb6ddca0.png" width="162" height="114" class="img_ev3q"></p>
+<p>Ora è possibile visualizzare i valori formattati come valuta.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-123-66f7bfb95b989cdea5f06ce4328fb549.png" width="202" height="153" class="img_ev3q"></p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="aggungere-intestazioni-di-colonna-in-ogni-pagina">Aggungere intestazioni di colonna in ogni pagina<a href="#aggungere-intestazioni-di-colonna-in-ogni-pagina" class="hash-link" aria-label="Link diretto a Aggungere intestazioni di colonna in ogni pagina" title="Link diretto a Aggungere intestazioni di colonna in ogni pagina">​</a></h3>
+<p>Un ulteriore miglioramento della formattazione prima di pubblicare il report nella servizio Power BI: rendere le intestazioni di colonna visualizzate in ogni pagina del report.</p>
+<ol>
+<li>
+<p>Nell&#x27;estremità destra della barra superiore del riquadro <strong>Raggruppamento</strong> selezionare la freccia&gt; a discesa <strong>Modalità avanzata</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-124-6623d2bc92afb5de42f47e848aa06760.png" width="662" height="199" class="img_ev3q"></p>
+</li>
+<li>
+<p>Selezionare la <strong>barra statica superiore</strong> in <strong>Gruppi di righe</strong>. Si noterà che la cella Nome società nella matrice è selezionata.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-125-9d3c94814d172c77d9cfedcc9ed094ad.png" width="272" height="357" class="img_ev3q"></p>
+</li>
+<li>
+<p>Nel riquadro <strong>Proprietà</strong> si esaminano le proprietà del membro <strong>Tablix</strong>. Impostare <strong>KeepWithGroup</strong> su <strong>After</strong> e <strong>RepeatOnNewPage</strong> su <strong>True</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-126-4139eb260a56d29cff322f96320eba22.png" width="242" height="324" class="img_ev3q"></p>
+<p>È il momento di eseguire il report e vedere come appare ora.</p>
+</li>
+<li>
+<p>Selezionare <strong>Esegui</strong> nella <strong>scheda Home</strong>.</p>
+</li>
+<li>
+<p>Selezionare <strong>Layout di stampa</strong>, se non è già selezionato. Il report include ora 29 pagine. Scorrere alcune pagine. Si noterà che la valuta è formattata, le colonne hanno intestazioni in ogni pagina e il report ha un piè di pagina con numeri di pagina e data e timestamp in ogni pagina.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-127-5b341f38f46d9f71e2ec9294725432c0.png" width="600" height="788" class="img_ev3q"></p>
+</li>
+<li>
+<p>Salvare il report nel computer.</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="caricare-il-report-nel-servizio">Caricare il report nel servizio<a href="#caricare-il-report-nel-servizio" class="hash-link" aria-label="Link diretto a Caricare il report nel servizio" title="Link diretto a Caricare il report nel servizio">​</a></h3>
+<p>Dopo aver creato questo report impaginato, è possibile caricarlo nel servizio Power BI.</p>
+<ol>
+<li>
+<p>Nel riquadro di spostamento servizio Power BI selezionare <strong>Aree di&gt;lavoro Crea area di lavoro</strong>.</p>
+</li>
+<li>
+<p>Denominare l&#x27;area di lavoro <strong>Azure AW</strong> o un altro nome univoco. Per il momento sei l&#x27;unico membro.</p>
+</li>
+<li>
+<p>Nella nuova area di lavoro selezionare <strong>Carica&gt;sfoglia</strong>. Passare al percorso in cui è stato salvato il file <strong>&gt;Apri</strong>.
+Power BI importa il file e viene visualizzato in <strong>Report</strong> nella pagina Elenco app.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-128-c1c8e7f537ca73f6a60fc3d5e3d394b7.png" width="602" height="291" class="img_ev3q"></p>
+</li>
+<li>
+<p>Selezionare il report per visualizzarlo.</p>
+</li>
+<li>
+<p>Se viene visualizzato un errore, potrebbe essere necessario immettere nuovamente le credenziali. Selezionare i puntini di sospensione a destra del report, quindi scegliere <strong>Gestisci</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-129-f00f649175ac03d67f4d007d32a164f7.png" width="360" height="118" class="img_ev3q"></p>
+</li>
+<li>
+<p>Selezionare <strong>Modificare credenziali</strong> e immettere le credenziali usate in Azure al momento della creazione del database di Azure.</p>
+<p><img decoding="async" loading="lazy" alt="Power BI Desktop" src="/learning/assets/images/bi-130-3b1b4f3d962c42a1d73517bebaec70e6.png" width="602" height="281" class="img_ev3q"></p>
+</li>
+<li>
+<p>È ora possibile visualizzare il report impaginato nel servizio Power BI.</p>
+</li>
+</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Pagina del documento"><a class="pagination-nav__link pagination-nav__link--prev" href="/learning/docs/power-platform/power-bi/esempi-pratici/decomposition-tree"><div class="pagination-nav__sublabel">Precedente</div><div class="pagination-nav__label">Creare un albero di scomposizione</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/learning/docs/category/power-apps"><div class="pagination-nav__sublabel">Successivo</div><div class="pagination-nav__label">Power Apps</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#prerequisiti" class="table-of-contents__link toc-highlight">Prerequisiti</a></li><li><a href="#creare-la-matrice-con-una-procedura-guidata" class="table-of-contents__link toc-highlight">Creare la matrice con una procedura guidata</a></li><li><a href="#elementi-creati" class="table-of-contents__link toc-highlight">Elementi creati</a></li><li><a href="#eseguire-il-report" class="table-of-contents__link toc-highlight">Eseguire il report</a></li><li><a href="#formattare-il-report" class="table-of-contents__link toc-highlight">Formattare il report</a></li><li><a href="#imposta-larghezza-pagina" class="table-of-contents__link toc-highlight">Imposta larghezza pagina</a></li><li><a href="#aggiungere-un-titolo-al-report" class="table-of-contents__link toc-highlight">Aggiungere un titolo al report</a></li><li><a href="#aggiungere-un-numero-di-pagina" class="table-of-contents__link toc-highlight">Aggiungere un numero di pagina</a></li><li><a href="#ingrandire-la-tabella" class="table-of-contents__link toc-highlight">Ingrandire la tabella</a></li><li><a href="#formattare-la-valuta" class="table-of-contents__link toc-highlight">Formattare la valuta</a></li><li><a href="#aggungere-intestazioni-di-colonna-in-ogni-pagina" class="table-of-contents__link toc-highlight">Aggungere intestazioni di colonna in ogni pagina</a></li><li><a href="#caricare-il-report-nel-servizio" class="table-of-contents__link toc-highlight">Caricare il report nel servizio</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.linkedin.com/in/thomascristofaro/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/thomascristofaro/" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://cristofaro.dev/it/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Thomas Cristofaro<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://learn.microsoft.com/it-it/training/browse/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Microsoft Learn<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Thomas Cristofaro, Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
