@@ -85,6 +85,12 @@ const config = {
                         label: 'Power Apps',
                     },
                     {
+                        type: 'docSidebar',
+                        sidebarId: 'netAISidebar',
+                        position: 'left',
+                        label: 'AI',
+                    },
+                    {
                         href: 'https://cristofaro.dev',
                         label: 'Blog',
                         position: 'right',

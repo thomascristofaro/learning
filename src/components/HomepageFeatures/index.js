@@ -29,17 +29,17 @@ const FeatureList = [
         link: '/docs/power-platform/intro',
         description: (
             <>
-                Una panoramica dei prodotti integrati all'interno di Microsoft Power Platform.
+                Corso per imparare a sviluppare applicazioni aziendali con Microsoft Power Platform.
             </>
         ),
     },
     {
-        title: 'Power Apps',
-        Img: require('@site/static/img/home-power-apps.png').default,
-        link: '/docs/power-apps/intro',
+        title: 'NET AI',
+        Img: require('@site/static/img/home-azure.png').default,
+        link: '/docs/net-ai/readme',
         description: (
             <>
-                Corso per imparare a sviluppare applicazioni aziendali con Microsoft Power Apps.
+                Corso per sviluppare applicazioni AI aziendali con Microsoft Azure, Semantic Kernel e .NET Core.
             </>
         ),
     },
